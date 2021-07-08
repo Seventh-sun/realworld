@@ -99,6 +99,7 @@
                 query.tab == 'feed' ? getFeedArticles(query) : getArticles(query),
                 getTags()
             ])
+            console.log(artRes, tagRes)
             artRes.articles && artRes.articles.forEach(art => {
                 art.lock = false
                 const md = new MarkdownIt()
