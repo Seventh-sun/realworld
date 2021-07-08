@@ -17,7 +17,6 @@ export const getFeedArticles = params => {
 }
 
 export const getTags = params => {
-    console.log(request)
     return request({
         url: '/api/tags',
         method: 'get',

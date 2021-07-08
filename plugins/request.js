@@ -10,6 +10,7 @@ export default ({store}) => {
         if(user && user.token){
             config.headers.Authorization = `Token ${user.token}`
         }
+        // console.log(config)
         return config
     }, function (error) {
         return Promise.reject(error)
@@ -17,7 +18,7 @@ export default ({store}) => {
 
     request.interceptors.response.use(
         response => {
-            return response.data 
+            return response.data ? response.data : response 
         },
         //接口错误状态处理，也就是说无响应时的处理
         error => {

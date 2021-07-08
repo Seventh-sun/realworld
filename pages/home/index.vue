@@ -95,12 +95,10 @@
             if(query && query.page){
                 query.offset = query.page ? ( query.page - 1 ) * limit : 0
             }
-            // const [ artRes, tagRes ] = await Promise.all([
-            //     query.tab == 'feed' ? getFeedArticles(query) : getArticles(query),
-            //     getTags()
-            // ])
-            const artRes =  query.tab == 'feed' ? await getFeedArticles(query) : await getArticles(query)
-            const tagRes = await getTags().catch(e => console.error(e))
+            const [ artRes, tagRes ] = await Promise.all([
+                query.tab == 'feed' ? getFeedArticles(query) : getArticles(query),
+                getTags()
+            ])
             artRes.articles && artRes.articles.forEach(art => {
                 art.lock = false
                 const md = new MarkdownIt()
