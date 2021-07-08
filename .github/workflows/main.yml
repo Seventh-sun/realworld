@@ -56,5 +56,5 @@ jobs:
           cd /www/wwwroot/realworld
           wget https://github.com/Seventh-sun/realworld/releases/latest/download/release.tgz -O release.tgz
           tar zxvf release.tgz
-          npm install --production
+          cnpm install --production
           pm2 reload pm2.config.json
