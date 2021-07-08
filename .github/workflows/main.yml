@@ -16,7 +16,7 @@ jobs:
     # 打包构建
     - name: Build
       uses: actions/setup-node@master
-    - run: cnpm install
+    - run: npm install
     - run: npm run build
     - run: tar -zcvf release.tgz .nuxt static nuxt.config.js package.json package-lock.json pm2.config.json
 
@@ -56,5 +56,5 @@ jobs:
           cd /www/wwwroot/realworld
           wget https://github.com/Seventh-sun/realworld/releases/latest/download/release.tgz -O release.tgz
           tar zxvf release.tgz
-          cnpm install --production
+          npm install --production
           pm2 reload pm2.config.json
