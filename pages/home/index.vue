@@ -99,11 +99,8 @@
             //     query.tab == 'feed' ? getFeedArticles(query) : getArticles(query),
             //     getTags()
             // ])
-            console.log(query)
             const artRes =  query.tab == 'feed' ? await getFeedArticles(query) : await getArticles(query)
-            console.log(artRes)
-            const tagRes = await getTags()
-            console.log(tagRes)
+            const tagRes = await getTags().catch(e => console.error(e))
             artRes.articles && artRes.articles.forEach(art => {
                 art.lock = false
                 const md = new MarkdownIt()
